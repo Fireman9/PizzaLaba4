@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.header {
+    position: sticky;
+    background-color: #222;
+    padding: 20px 8%;
+}
+
+.headerTop {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 30px;
+}
+
+.companyName {
+    font-family: Open Sans, sans-serif;
+    font-weight: 750;
+    font-size: 36px;
+    color: white;
+}
+
+.cart {
+
+}
+
+.headerBot {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.headerLink {
+    font-family: Open Sans, sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: white;
+    text-align: center;
+    line-height: 120%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.headerLink:hover {
+    letter-spacing: .05em;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#content {
+    margin-left: 16%;
+    margin-right: 16%;
+    margin-top: 20px;
+}
+
+.list {
+    display: flex;
+    width: 608%;
+    transition: all 0.5s ease-in-out;
+}
+
+.listText {
+    font-weight: 700;
+    line-height: 80px;
+    font-size: 86px;
+    font-family: vw6-VWHead, sans-serif;
+    color: white;
+    margin-left: 4%;
+    position: absolute;
+    bottom: 25%;
+}
+
+.listItems {
+    width: 92%;
+    margin-right: 8%;
+}
+
+.listImg {
+    width: 100%;
+    align-self: flex-start;
+    border-radius: 20px;
+}
+
+.scroller {
+
+}
+
+.scrollerButtons {
+    display: grid;
+    grid-template-columns: 3% 3% 3% 3%;
+    padding-right: 40%;
+    padding-left: 40%;
+    grid-gap: 33%;
+    list-style-type: none;
+    text-align: center;
+}
+
+.scrollerBut {
+    width: 1.5em;
+    height: 1.5em;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid #4f4f4f;
+    color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    outline: none;
+}
+
+.selectedScrollerBut{
+    background-color: #4f4f4f;
+}
