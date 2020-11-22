@@ -81,9 +81,9 @@ async function createProducts(callback) {
         if (products[i].recommended) {
             let productHtml = "<div class='product'>" +
                 "<div class='productName'>" + products[i].name + "</div> " +
-                "<div class='productImage'><img src='" + products[i].image + "' alt></div> " +
+                "<div class='productImageDiv'><img class='productImage' src='" + products[i].image + "' alt></div> " +
                 "<div class='productDesc'>" + products[i].description + "</div> " +
-                "<div class='productPrice'>" + products[i].price + "</div> " +
+                "<div class='productPrice'>" + products[i].price + "грн</div> " +
                 "<div class='productWeight'>" + products[i].weight + "</div> " +
                 "</div>";
             recommendedHtml += productHtml;
