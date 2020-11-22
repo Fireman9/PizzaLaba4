@@ -56,7 +56,7 @@ body {
 
 .list {
     display: flex;
-    width: 608%;
+    width: 590%;
     transition: all 0.5s ease-in-out;
 }
 
@@ -108,6 +108,25 @@ body {
     outline: none;
 }
 
-.selectedScrollerBut{
+.selectedScrollerBut {
     background-color: #4f4f4f;
+}
+
+.productsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.product {
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+    background: #fff;
+    border-radius: 25px;
+    padding: 10px;
+    font-family: Open Sans, sans-serif;
+}
+
+.product:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, .5);
 }

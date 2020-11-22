@@ -1,6 +1,6 @@
 import {content} from "./router.js";
 
-let mainHtml = "<div class='list'>" +
+let discBlockHtml = "<div class='list'>" +
     "<div class='listItems'>" +
     "<img src='https://media.dominos.ua/slider/slide_image/2020/09/23/-20_slider_ukr.jpg' alt class='listImg'>" +
     "<div class='listText'></div>" +
@@ -30,8 +30,11 @@ let mainHtml = "<div class='list'>" +
 
 export function setMainPage() {
     content.addEventListener("click", toggleDone);
-    content.innerHTML = mainHtml;
-    setInterval(timeAnim,5000);
+    content.innerHTML = discBlockHtml;
+    setInterval(timeAnim, 5000);
+    createProducts(function (recommendedHtml) {
+        content.innerHTML += recommendedHtml;
+    })
 }
 
 function toggleDone(event) {
@@ -52,15 +55,40 @@ function changeSelectedScrollerBut(clicked) {
 function timeAnim() {
     let selected = document.querySelectorAll('.scrollerBut');
     for (let elem of selected) {
-        if(elem.classList.contains("selectedScrollerBut")){
-            if(elem.innerText === "3"){
+        if (elem.classList.contains("selectedScrollerBut")) {
+            if (elem.innerText === "3") {
                 selected[0].click();
                 break;
-            }
-            else{
+            } else {
                 selected[parseInt(elem.innerText) + 1].click();
                 break;
             }
         }
     }
+}
+
+async function createProducts(callback) {
+    let recommendedHtml = "<div class='productsContainer'>";
+    let response = await fetch('https://my-json-server.typicode.com/Fireman9/PizzaLaba4/products');
+    let products;
+    if (response.ok) {
+        products = await response.json();
+    } else {
+        console.log("Error fetch");
+        return;
+    }
+    for (let i = 0; i < products.length; i++) {
+        if (products[i].recommended) {
+            let productHtml = "<div class='product'>" +
+                "<div class='productName'>" + products[i].name + "</div> " +
+                "<div class='productImage'><img src='" + products[i].image + "' alt></div> " +
+                "<div class='productDesc'>" + products[i].description + "</div> " +
+                "<div class='productPrice'>" + products[i].price + "</div> " +
+                "<div class='productWeight'>" + products[i].weight + "</div> " +
+                "</div>";
+            recommendedHtml += productHtml;
+        }
+    }
+    recommendedHtml += "</div>"
+    callback(recommendedHtml);
 }
