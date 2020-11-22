@@ -31,7 +31,7 @@ let mainHtml = "<div class='list'>" +
 export function setMainPage() {
     content.addEventListener("click", toggleDone);
     content.innerHTML = mainHtml;
-    setInterval(timeAnim,3000);
+    setInterval(timeAnim,5000);
 }
 
 function toggleDone(event) {
