@@ -25,7 +25,8 @@ let discBlockHtml = "<div class='list'>" +
     "<li><button class='scrollerBut'>2</button></li>" +
     "<li><button class='scrollerBut'>3</button></li>" +
     "</ul>" +
-    "</div>";
+    "</div>" +
+    "<div class='category'>Піца: Топ тижня</div>";
 
 
 export function setMainPage() {
@@ -80,11 +81,13 @@ async function createProducts(callback) {
     for (let i = 0; i < products.length; i++) {
         if (products[i].recommended) {
             let productHtml = "<div class='product'>" +
+                "<div class='productImageDiv'>" +
+                "<img class='productImage' src='" + products[i].image + "' alt>" +
+                "<div class='productWeight'>" + products[i].weight + " г</div>" +
+                "</div> " +
                 "<div class='productName'>" + products[i].name + "</div> " +
-                "<div class='productImageDiv'><img class='productImage' src='" + products[i].image + "' alt></div> " +
-                "<div class='productDesc'>" + products[i].description + "</div> " +
-                "<div class='productPrice'>" + products[i].price + "грн</div> " +
-                "<div class='productWeight'>" + products[i].weight + "</div> " +
+                "<div class='productDesc'><b>Індгредієнти:</b><br>" + products[i].description + "</div> " +
+                "<div class='productPrice'>" + products[i].price + " грн</div> " +
                 "</div>";
             recommendedHtml += productHtml;
         }
