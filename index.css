@@ -3,6 +3,11 @@ body {
     overflow-x: hidden;
 }
 
+a {
+    color: #000 !important;
+    text-decoration: none;
+}
+
 .header {
     position: sticky;
     background-color: #222;
@@ -25,7 +30,39 @@ body {
 }
 
 .cart {
+    display: flex;
+    justify-content: flex-end;
+}
 
+.countAndIcon {
+    width: 46px;
+    height: 46px;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #4f4f4f;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+}
+
+.count {
+    font-weight: 700;
+    font-size: 14px;
+    color: #f8f8f8;
+    font-family: Open Sans, sans-serif;
+}
+
+.cartBut {
+    height: 46px;
+    width: 145px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #f8f8f8;
+    border: none;
+    border-radius: 25px;
+    background: #e31837;
+    outline: none;
 }
 
 .headerBot {
@@ -142,6 +179,7 @@ body {
     font-weight: bold;
     padding: 5px 5px 10px;
     color: #222;
+    margin-top: 20px;
 }
 
 .productsContainer {
@@ -201,10 +239,32 @@ body {
     height: 80px;
 }
 
+.priceAndAddToCart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    width: 100%;
+}
+
 .productPrice {
     font-size: 20px;
     font-weight: 700;
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.addToCart {
+    height: 50px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: Open Sans, sans-serif;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    background: #e31837;
+    outline: none;
 }
 
 .footer {

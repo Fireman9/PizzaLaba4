@@ -14,8 +14,8 @@ let discBlockHtml = "<div class='list'>" +
     "<div class='listText'><br></div>" +
     "</div>" +
     "<div class='listItems'>" +
-    "<img src='https://media.dominos.ua/slider/slide_image/2019/06/20/-30_1920x736-min.JPG' alt class='listImg' '>" +
-    "<div class='listText'>Знижка з 24.00 до 7.00<br>-15%</div>" +
+    "<img src='https://media.dominos.ua/slider/slide_image/2020/10/29/unicorn-vtornik--80_ukr.jpg' alt class='listImg' '>" +
+    "<div class='listText'></div>" +
     "</div>" +
     "</div>" +
     "<div class='scroller'>" +
@@ -87,7 +87,10 @@ async function createProducts(callback) {
                 "</div> " +
                 "<div class='productName'>" + products[i].name + "</div> " +
                 "<div class='productDesc'><b>Індгредієнти:</b><br>" + products[i].description + "</div> " +
-                "<div class='productPrice'>" + products[i].price + " грн</div> " +
+                "<div class='priceAndAddToCart'>" +
+                "<div class='productPrice'>" + products[i].price + " грн</div>" +
+                "<button class='addToCart'>В кошик</button>" +
+                "</div> " +
                 "</div>";
             recommendedHtml += productHtml;
         }
