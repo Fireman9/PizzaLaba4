@@ -9,14 +9,18 @@ async function router() {
     let splittedHash = hash.split("/");
     if (splittedHash.length === 1) {
         if (splittedHash[0] === "") {
+            content.innerHTML = "<div class='loader'></div>";
             setMainPage();
         } else if (splittedHash[0] === "#catalog") {
+            content.innerHTML = "<div class='loader'></div>";
             setCatalogPage();
             window.location.href = href + "#catalog";
         } else if (splittedHash[0] === "#cart") {
+            content.innerHTML = "<div class='loader'></div>";
             // TODO: call cart page
             window.location.href = href + "#cart";
         } else {
+            content.innerHTML = "<div class='loader'></div>";
             setMainPage();
             window.location.href = href + "";
         }
@@ -39,8 +43,10 @@ async function router() {
                 }
             }
             if (exist) {
+                content.innerHTML = "<div class='loader'></div>";
                 // TODO: call categories page generator with categories[index] argument
             } else {
+                content.innerHTML = "<div class='loader'></div>";
                 setMainPage();
                 window.location.href = href + "";
             }
@@ -62,8 +68,10 @@ async function router() {
                 }
             }
             if (exist) {
+                content.innerHTML = "<div class='loader'></div>";
                 // TODO: call products page generator with products[index] argument
             } else {
+                content.innerHTML = "<div class='loader'></div>";
                 setMainPage();
                 window.location.href = href + "";
             }
@@ -85,18 +93,22 @@ async function router() {
                 }
             }
             if (exist) {
+                content.innerHTML = "<div class='loader'></div>";
                 // TODO: call discounts page generator with discounts[index] argument
             } else {
+                content.innerHTML = "<div class='loader'></div>";
                 setMainPage();
                 window.location.href = href + "";
             }
         } else if (splittedHash[0] === "#order") {
             // TODO: check to id
         } else {
+            content.innerHTML = "<div class='loader'></div>";
             setMainPage();
             window.location.href = href;
         }
     } else {
+        content.innerHTML = "<div class='loader'></div>";
         setMainPage();
         window.location.href = href + "";
     }
