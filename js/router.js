@@ -8,8 +8,7 @@ function router() {
     let href = window.location.href.replace(window.location.hash, '');
     if (hash === "") {
         setMainPage()
-    }
-    else if(hash === "#catalog"){
+    } else if (hash === "#catalog") {
         setCatalogPage();
         window.location.href = href + "#catalog";
     }
