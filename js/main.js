@@ -30,10 +30,10 @@ let discBlockHtml = "<div class='list'>" +
 
 
 export function setMainPage() {
-    content.addEventListener("click", toggleDone);
-    content.innerHTML = discBlockHtml;
-    setInterval(timeAnim, 5000);
     createProducts(function (recommendedHtml) {
+        content.addEventListener("click", toggleDone);
+        content.innerHTML = discBlockHtml;
+        setInterval(timeAnim, 5000);
         content.innerHTML += recommendedHtml;
     })
 }
