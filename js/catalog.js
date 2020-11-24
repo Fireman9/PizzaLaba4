@@ -18,7 +18,7 @@ async function createCatalog(callback) {
         return;
     }
     for (let i = 0; i < db.categories.length; i++) {
-        catalogHtml += "<div class='category'>Піца: " + db.categories[i].name + "</div>";
+        catalogHtml += "<a href='#catalog/" + db.categories[i].url + "'>" + "<div class='category'>Піца: " + db.categories[i].name + "</div></a>";
         catalogHtml += "<div class='productsContainer'>";
         for (let j = 0; j < db.products.length; j++) {
             if (db.products[j].categoryID === i) {
