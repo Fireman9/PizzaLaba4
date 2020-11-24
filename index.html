@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<div class="header">
+<div id='header' class="header">
     <div class="headerTop">
         <div class="companyName">
             <img src="images/CyberFrog.png">
@@ -33,8 +33,7 @@
 <div id="content">
     <div class="loader"></div>
 </div>
-<script>content.style.minHeight = window.innerHeight - 180 - 157 - 20 + "px"</script>
-<div class="footer">
+<div id='footer' class="footer" style="opacity: 0">
     <div class="contactInfo">
         <div class="contactTitle"><b>Контакти:</b></div>
         <div class="contactEmail">cyberpizza@gmail.com</div>
@@ -48,6 +47,10 @@
         <div class="markInfo">© 2020 Cyber Pizza Україна</div>
     </div>
 </div>
+<script>
+    content.style.minHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight - 50 + "px";
+    footer.style.opacity = "1";
+</script>
 <script type="module" src="js/router.js"></script>
 </body>
-</html>
+</html> 
