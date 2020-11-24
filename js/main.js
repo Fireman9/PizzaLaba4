@@ -1,32 +1,32 @@
 import {content} from "./router.js";
 
-let discBlockHtml = "<div class='list'>" +
-    "<div class='listItems'>" +
-    "<img src='https://media.dominos.ua/slider/slide_image/2020/09/23/-20_slider_ukr.jpg' alt class='listImg'>" +
-    "<div class='listText'></div>" +
-    "</div>" +
-    "<div class='listItems'>" +
-    "<img src='https://media.dominos.ua/slider/slide_image/2020/11/13/weekend-pizza_slider_ukr.jpg' alt class='listImg' '>" +
-    "<div class='listText'><br></div>" +
-    "</div>" +
-    "<div class='listItems'>" +
-    "<img src='https://media.dominos.ua/slider/slide_image/2020/09/11/woweekend_slider_ukr.jpg' alt class='listImg' '>" +
-    "<div class='listText'><br></div>" +
-    "</div>" +
-    "<div class='listItems'>" +
-    "<img src='https://media.dominos.ua/slider/slide_image/2020/10/29/unicorn-vtornik--80_ukr.jpg' alt class='listImg' '>" +
-    "<div class='listText'></div>" +
-    "</div>" +
-    "</div>" +
-    "<div class='scroller'>" +
-    "<ul class='scrollerButtons'>" +
-    "<li><button class='scrollerBut selectedScrollerBut'>0</button></li>" +
-    "<li><button class='scrollerBut'>1</button></li>" +
-    "<li><button class='scrollerBut'>2</button></li>" +
-    "<li><button class='scrollerBut'>3</button></li>" +
-    "</ul>" +
-    "</div>" +
-    "<div class='category'>Піца: Топ тижня</div>";
+let discBlockHtml = `<div class='list'>
+    <div class='listItems'>
+    <img src='https://media.dominos.ua/slider/slide_image/2020/09/23/-20_slider_ukr.jpg' alt class='listImg'>
+    <div class='listText'></div>
+    </div>
+    <div class='listItems'>
+    <img src='https://media.dominos.ua/slider/slide_image/2020/11/13/weekend-pizza_slider_ukr.jpg' alt class='listImg'>
+    <div class='listText'><br></div>
+    </div>
+    <div class='listItems'>
+    <img src='https://media.dominos.ua/slider/slide_image/2020/09/11/woweekend_slider_ukr.jpg' alt class='listImg'>
+    <div class='listText'><br></div>
+    </div>
+    <div class='listItems'>
+    <img src='https://media.dominos.ua/slider/slide_image/2020/10/29/unicorn-vtornik--80_ukr.jpg' alt class='listImg'>
+    <div class='listText'></div>
+    </div>
+    </div>
+    <div class='scroller'>
+    <ul class='scrollerButtons'>
+    <li><button class='scrollerBut selectedScrollerBut'>0</button></li>
+    <li><button class='scrollerBut'>1</button></li>
+    <li><button class='scrollerBut'>2</button></li>
+    <li><button class='scrollerBut'>3</button></li>
+    </ul>
+    </div>
+    <div class='category'>Піца: Топ тижня</div>`;
 
 
 export function setMainPage() {
@@ -77,23 +77,23 @@ async function createProducts(callback) {
     if (response.ok) {
         products = await response.json();
     } else {
-        console.log("Error fetch");
+        console.log("Error fetch in main");
         return;
     }
     for (let i = 0; i < products.length; i++) {
         if (products[i].recommended) {
-            let productHtml = "<div class='product'>" +
-                "<div class='productImageDiv'>" +
-                "<img class='productImage' src='" + products[i].image + "' alt>" +
-                "<div class='productWeight'>" + products[i].weight + " г</div>" +
-                "</div> " +
-                "<div class='productName'>" + products[i].name + "</div> " +
-                "<div class='productDesc'><b>Індгредієнти:</b><br>" + products[i].description + "</div> " +
-                "<div class='priceAndAddToCart'>" +
-                "<div class='productPrice'>" + products[i].price + " грн</div>" +
-                "<button class='addToCart'>В кошик</button>" +
-                "</div> " +
-                "</div>";
+            let productHtml = `<div class='product'>
+                <div class='productImageDiv'>
+                <img class='productImage' src='${products[i].image}' alt>
+                <div class='productWeight'>${products[i].weight} г</div>
+                </div>
+                <a href='#product/${products[i].url}'><div class='productName'>${products[i].name}</div></a>
+                <div class='productDesc'><b>Індгредієнти:</b><br>${products[i].description}</div>
+                <div class='priceAndAddToCart'>
+                <div class='productPrice'>${products[i].price} грн</div>
+                <button class='addToCart'>В кошик</button>
+                </div>
+                </div>`;
             recommendedHtml += productHtml;
         }
     }

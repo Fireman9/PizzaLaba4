@@ -8,6 +8,10 @@ a {
     text-decoration: none;
 }
 
+li {
+    /*list-style: url("https://www.onlinewebfonts.com/icon/58956");*/
+}
+
 .header {
     position: sticky;
     background-color: #222;
@@ -184,7 +188,7 @@ a {
 
 .productsContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
     grid-gap: 20px;
     margin-top: 20px;
 }
@@ -296,4 +300,44 @@ a {
     font-weight: 300;
     font-size: 14px;
     font-family: vw6-VWHead, sans-serif;
+}
+
+.productImageAndDescription {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    grid-gap: 50px;
+}
+
+.productFullDesc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.productFullName {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.ulIngredients {
+    font-family: Roboto, sans-serif;
+    /*font-weight: 500;*/
+    font-size: 18px;
+}
+
+.liIngredients {
+    font-family: Roboto, sans-serif;
+}
+
+.productFullPriceAndAddToCart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.productFullPrice {
+    font-size: 25px;
+    font-weight: 700;
 }

@@ -5,6 +5,7 @@ let catalogHtml = "";
 export function setCatalogPage() {
     window.scrollTo(0, 0);
     content.innerHTML = "<div class='loader'></div>";
+    catalogHtml = "";
     createCatalog(function (catalogHtml) {
         content.innerHTML = catalogHtml;
     })
@@ -20,22 +21,22 @@ async function createCatalog(callback) {
         return;
     }
     for (let i = 0; i < db.categories.length; i++) {
-        catalogHtml += "<a href='#catalog/" + db.categories[i].url + "'>" + "<div class='category'>Піца: " + db.categories[i].name + "</div></a>";
+        catalogHtml += `<a href='#catalog/${db.categories[i].url}'><div class='category'>Піца: ${db.categories[i].name}</div></a>`;
         catalogHtml += "<div class='productsContainer'>";
         for (let j = 0; j < db.products.length; j++) {
             if (db.products[j].categoryID === i) {
-                let productHtml = "<div class='product'>" +
-                    "<div class='productImageDiv'>" +
-                    "<img class='productImage' src='" + db.products[j].image + "' alt>" +
-                    "<div class='productWeight'>" + db.products[j].weight + " г</div>" +
-                    "</div> " +
-                    "<div class='productName'>" + db.products[j].name + "</div> " +
-                    "<div class='productDesc'><b>Індгредієнти:</b><br>" + db.products[j].description + "</div> " +
-                    "<div class='priceAndAddToCart'>" +
-                    "<div class='productPrice'>" + db.products[j].price + " грн</div>" +
-                    "<button class='addToCart'>В кошик</button>" +
-                    "</div> " +
-                    "</div>";
+                let productHtml = `<div class='product'>
+                    <div class='productImageDiv'>
+                    <img class='productImage' src='${db.products[j].image}' alt>
+                    <div class='productWeight'>${db.products[j].weight} г</div>
+                    </div>
+                    <a href='#product/${db.products[j].url}'><div class='productName'>${db.products[j].name}</div></a>
+                    <div class='productDesc'><b>Індгредієнти:</b><br>${db.products[j].description}</div>
+                    <div class='priceAndAddToCart'>
+                    <div class='productPrice'>${db.products[j].price} грн</div>
+                    <button class='addToCart'>В кошик</button>
+                    </div>
+                    </div>`;
                 catalogHtml += productHtml;
             }
         }

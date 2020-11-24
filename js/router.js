@@ -1,6 +1,7 @@
 import {setMainPage} from "./main.js"
 import {setCatalogPage} from "./catalog.js";
 import {setCategoryPage} from "./category.js";
+import {setProductPage} from "./product.js";
 
 
 export const content = document.getElementById("content");
@@ -24,6 +25,8 @@ async function router() {
         }
     } else if (splittedHash.length === 2) {
         if (splittedHash[0] === "#catalog") {
+            window.scrollTo(0, 0);
+            content.innerHTML = "<div class='loader'></div>";
             let response = await fetch('https://my-json-server.typicode.com/Fireman9/PizzaLaba4/db');
             let db;
             if (response.ok) {
@@ -44,9 +47,11 @@ async function router() {
                 setCategoryPage(db, index);
             } else {
                 setMainPage();
-                window.location.href = href + "";
+                window.location.href = href;
             }
         } else if (splittedHash[0] === "#product") {
+            window.scrollTo(0, 0);
+            content.innerHTML = "<div class='loader'></div>";
             let response = await fetch('https://my-json-server.typicode.com/Fireman9/PizzaLaba4/products');
             let products;
             if (response.ok) {
@@ -64,7 +69,7 @@ async function router() {
                 }
             }
             if (exist) {
-                // TODO: call products page generator with products[index] argument
+                setProductPage(products[index]);
             } else {
                 setMainPage();
                 window.location.href = href;
@@ -104,5 +109,24 @@ async function router() {
     }
 }
 
+function sizeFit() {
+    if (window.innerWidth <= 1300) {
+        content.style.marginLeft = "1%";
+        content.style.marginRight = "1%";
+    } else if (window.innerWidth <= 1920 && window.innerWidth > 1300) {
+        let margin = (window.innerWidth - 1350) / 31;
+        content.style.marginLeft = margin + "%";
+        content.style.marginRight = margin + "%";
+    } else {
+        content.style.marginLeft = "16%";
+        content.style.marginRight = "16%";
+    }
+}
+
+content.style.minHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight - 50 + "px";
+footer.style.opacity = "1";
+
+window.addEventListener("resize", sizeFit);
+window.addEventListener("load", sizeFit);
 window.addEventListener("load", router);
 window.addEventListener("hashchange", router);
