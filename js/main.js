@@ -30,6 +30,8 @@ let discBlockHtml = "<div class='list'>" +
 
 
 export function setMainPage() {
+    window.scrollTo(0, 0);
+    content.innerHTML = "<div class='loader'></div>";
     createProducts(function (recommendedHtml) {
         content.addEventListener("click", toggleDone);
         content.innerHTML = discBlockHtml;

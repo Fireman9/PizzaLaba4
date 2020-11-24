@@ -3,6 +3,8 @@ import {content} from "./router.js";
 let categoryHtml;
 
 export function setCategoryPage(db, index) {
+    window.scrollTo(0, 0);
+    content.innerHTML = "<div class='loader'></div>";
     categoryHtml = "";
     createCategory(db, index, function (categoryHtml) {
         content.innerHTML = categoryHtml;

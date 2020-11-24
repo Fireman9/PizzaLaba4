@@ -3,6 +3,8 @@ import {content} from "./router.js";
 let catalogHtml = "";
 
 export function setCatalogPage() {
+    window.scrollTo(0, 0);
+    content.innerHTML = "<div class='loader'></div>";
     createCatalog(function (catalogHtml) {
         content.innerHTML = catalogHtml;
     })
