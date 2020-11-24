@@ -1,7 +1,11 @@
 import {setMainPage} from "./main.js"
 import {setCatalogPage} from "./catalog.js";
+import {setCategoryPage} from "./category.js";
+
 
 export const content = document.getElementById("content");
+export const header = document.getElementById("header");
+export const footer = document.getElementById("footer");
 
 async function router() {
     let hash = window.location.hash;
@@ -30,18 +34,18 @@ async function router() {
         }
     } else if (splittedHash.length === 2) {
         if (splittedHash[0] === "#catalog") {
-            let response = await fetch('https://my-json-server.typicode.com/Fireman9/PizzaLaba4/categories');
-            let categories;
+            let response = await fetch('https://my-json-server.typicode.com/Fireman9/PizzaLaba4/db');
+            let db;
             if (response.ok) {
-                categories = await response.json();
+                db = await response.json();
             } else {
                 console.log("Error fetch in router");
                 return;
             }
             let exist = false;
             let index;
-            for (let i = 0; i < categories.length; i++) {
-                if (categories[i].url === splittedHash[1]) {
+            for (let i = 0; i < db.categories.length; i++) {
+                if (db.categories[i].url === splittedHash[1]) {
                     exist = true;
                     index = i;
                 }
@@ -49,7 +53,7 @@ async function router() {
             if (exist) {
                 window.scrollTo(0, 0);
                 content.innerHTML = "<div class='loader'></div>";
-                // TODO: call categories page generator with categories[index] argument
+                setCategoryPage(db, index);
             } else {
                 window.scrollTo(0, 0);
                 content.innerHTML = "<div class='loader'></div>";
