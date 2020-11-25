@@ -4,25 +4,25 @@
       "name": "Піца вихідного дня",
       "description": "Купуй на вихідних кожну другу велику та середню піцу зі знижкою 50%! Акція діє у п'ятницю, суботу та неділю.",
       "url": "weekendPizza",
-      "image": ""
+      "image": "images/weekendPizza.jpg"
     },
     {
       "name": "Знижка 20% на все",
       "description": "Отримуй 20% знижки на своє замовлення у піцерії! Акція розповсюджується на всі позиції з меню, окрім алкогольних напоїв та безалкогольного пива.",
       "url": "disc20",
-      "image": ""
+      "image": "images/disc20.jpg"
     },
     {
       "name": "WoWeekend",
       "description": "Замовляй будь-яку середню піцу лише за 199 грн чи велику піцу лише за 239 грн! Акція діє кожну п'ятницю, суботу та неділю.",
       "url": "wowWeekend",
-      "image": ""
+      "image": "images/wowWeekend.jpg"
     },
     {
       "name": "Crazy Tuesday",
       "description": "Щовівторка купуй одну середню або велику піцу та отримуй другу зі знижкою 80%!",
       "url": "crazyTuesday",
-      "image": ""
+      "image": "images/crazyTuesday.jpg"
     }
   ],
   "categories": [
