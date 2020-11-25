@@ -2,6 +2,7 @@ import {setMainPage} from "./main.js"
 import {setCatalogPage} from "./catalog.js";
 import {setCategoryPage} from "./category.js";
 import {setProductPage} from "./product.js";
+import {setDiscountPage} from "./discount.js";
 
 
 export const content = document.getElementById("content");
@@ -75,6 +76,8 @@ async function router() {
                 window.location.href = href;
             }
         } else if (splittedHash[0] === "#discount") {
+            window.scrollTo(0, 0);
+            content.innerHTML = "<div class='loader'></div>";
             let response = await fetch('https://my-json-server.typicode.com/Fireman9/PizzaLaba4/discounts');
             let discounts;
             if (response.ok) {
@@ -92,7 +95,7 @@ async function router() {
                 }
             }
             if (exist) {
-                // TODO: call discounts page generator with discounts[index] argument
+                setDiscountPage(discounts[index]);
             } else {
                 setMainPage();
                 window.location.href = href;
@@ -110,6 +113,7 @@ async function router() {
 }
 
 function sizeFit() {
+    // TODO: check for bot limit
     if (window.innerWidth <= 1300) {
         content.style.marginLeft = "1%";
         content.style.marginRight = "1%";

@@ -71,7 +71,8 @@ li {
 
 .headerBot {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    /*grid-template-columns: 33% 33% 33%;*/
+    grid-template-columns: 50% 50%;
 }
 
 .headerLink {
@@ -192,6 +193,26 @@ li {
     grid-gap: 20px;
     margin-top: 20px;
 }
+
+/*@media only screen and (max-device-width: 481px) {*/
+/*    .productsContainer {*/
+/*        grid-template-columns: repeat(auto-fill, minmax(481px, 1fr));*/
+/*    }*/
+/*    #content {*/
+/*        margin-left: 2%;*/
+/*        margin-right: 2%;*/
+/*    }*/
+/*}*/
+
+/*@media only screen and (max-device-width: 681px) {*/
+/*    .productsContainer {*/
+/*        grid-template-columns: repeat(auto-fill, minmax(681px, 1fr));*/
+/*    }*/
+/*    #content {*/
+/*        margin-left: 2%;*/
+/*        margin-right: 2%;*/
+/*    }*/
+/*}*/
 
 .product {
     border: 1px solid #e0e0e0;
@@ -340,4 +361,34 @@ li {
 .productFullPrice {
     font-size: 25px;
     font-weight: 700;
+}
+
+.discountImageAndDescription {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    grid-gap: 50px;
+}
+
+.discountImage {
+    width: 100%;
+    align-self: flex-start;
+    border-radius: 15px;
+}
+
+.discountFullNameAndDesc {
+    display: flex;
+    flex-direction: column;
+}
+
+.discountFullName {
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+}
+
+.discountFullDesc {
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    margin-top: 20px;
 }
