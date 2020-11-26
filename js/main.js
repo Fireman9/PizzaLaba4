@@ -89,7 +89,7 @@ async function createProducts(callback) {
                 <div class='productDesc'><b>Індгредієнти:</b><br>${db.products[i].description}</div>
                 <div class='priceAndAddToCart'>
                 <div class='productPrice'>${db.products[i].price} грн</div>
-                <button class='addToCart'>В кошик</button>
+                <button class='addToCart' value="${db.products[i].url}">В кошик</button>
                 </div>
                 </div>`;
             recommendedHtml += productHtml;

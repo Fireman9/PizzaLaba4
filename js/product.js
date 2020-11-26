@@ -22,7 +22,7 @@ export function createProduct(product, callback) {
         ${ingredientsHtml}</ul>
         <div class='productFullPriceAndAddToCart'>
         <div class='productFullPrice'>${product.price} грн</div>
-        <button class='addToCart'>В Кошик</button>
+        <button class='addToCart' value="${product.url}">В Кошик</button>
         </div>
         </div>
         </div>`;

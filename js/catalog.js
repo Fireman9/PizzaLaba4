@@ -34,7 +34,7 @@ async function createCatalog(callback) {
                     <div class='productDesc'><b>Індгредієнти:</b><br>${db.products[j].description}</div>
                     <div class='priceAndAddToCart'>
                     <div class='productPrice'>${db.products[j].price} грн</div>
-                    <button class='addToCart'>В кошик</button>
+                    <button class='addToCart' value="${db.products[j].url}">В кошик</button>
                     </div>
                     </div>`;
                 catalogHtml += productHtml;

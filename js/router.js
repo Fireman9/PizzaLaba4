@@ -9,6 +9,37 @@ export const content = document.getElementById("content");
 export const header = document.getElementById("header");
 export const footer = document.getElementById("footer");
 
+function addToCart(value) {
+    console.log(value);
+    if (localStorage.getItem("cart") === null) {
+        let cart = [];
+        cart.push({
+            name: value,
+            count: 1
+        })
+        localStorage.setItem("cart", JSON.stringify(cart));
+    } else {
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        let exist = false;
+        let index;
+        for (let i = 0; i < cart.length; i++) {
+            if (cart[i].name === value) {
+                exist = true;
+                index = i;
+            }
+        }
+        if (exist) {
+            cart[index].count++;
+        } else {
+            cart.push({
+                name: value,
+                count: 1
+            })
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+}
+
 async function router() {
     let hash = window.location.hash;
     let href = window.location.href.replace(window.location.hash, '');
@@ -114,7 +145,7 @@ async function router() {
 
 function sizeFit() {
     // TODO: check for bot limit
-    if (window.innerWidth <= 1300) {
+    if (window.innerWidth <= 1350) {
         content.style.marginLeft = "1%";
         content.style.marginRight = "1%";
     } else if (window.innerWidth <= 1920 && window.innerWidth > 1300) {
@@ -134,3 +165,9 @@ window.addEventListener("resize", sizeFit);
 window.addEventListener("load", sizeFit);
 window.addEventListener("load", router);
 window.addEventListener("hashchange", router);
+
+content.addEventListener("click", function (event) {
+    if (event.target.classList.contains("addToCart")) {
+        addToCart(event.target.value);
+    }
+})
