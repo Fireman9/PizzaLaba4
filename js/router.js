@@ -3,6 +3,8 @@ import {setCatalogPage} from "./catalog.js";
 import {setCategoryPage} from "./category.js";
 import {setProductPage} from "./product.js";
 import {setDiscountPage} from "./discount.js";
+import {setCartPage} from "./cart.js";
+import {updateCartProductsAndPrice} from "./cart.js";
 
 
 export const content = document.getElementById("content");
@@ -18,6 +20,7 @@ function addToCart(value) {
             count: 1
         })
         localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
     } else {
         let cart = JSON.parse(localStorage.getItem("cart"));
         let exist = false;
@@ -37,7 +40,24 @@ function addToCart(value) {
             })
         }
         localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
     }
+}
+
+function updateCartCount() {
+    if (localStorage.getItem("cart") === null) return;
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    let count = document.getElementById("count");
+    let cartCount = 0;
+    for (let i = 0; i < cart.length; i++) {
+        cartCount += cart[i].count;
+    }
+    if (cartCount > 9) {
+        count.innerText = cartCount.toString();
+    } else {
+        count.innerText = "0" + cartCount;
+    }
+    showPrice();
 }
 
 async function router() {
@@ -50,7 +70,18 @@ async function router() {
         } else if (splittedHash[0] === "#catalog") {
             setCatalogPage();
         } else if (splittedHash[0] === "#cart") {
-            // TODO: call cart page
+            if (localStorage.getItem("cart") === null) {
+                setMainPage();
+                window.location.href = href;
+                return;
+            }
+            let cart = JSON.parse(localStorage.getItem("cart"));
+            if (cart.length === 0) {
+                setMainPage();
+                window.location.href = href;
+                return;
+            }
+            setCartPage();
         } else {
             setMainPage();
             window.location.href = href;
@@ -158,16 +189,65 @@ function sizeFit() {
     }
 }
 
+async function showPrice() {
+    if (localStorage.getItem("cart") === null) return;
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    let totalPrice = document.getElementById("totalPrice");
+    if (cart.length === 0) {
+        totalPrice.innerText = "";
+        totalPrice.style.padding = "0";
+        return;
+    }
+    let products = await fetch('https://my-json-server.typicode.com/Fireman9/PizzaLaba4/products')
+        .then(products => products.json());
+    let price = 0;
+    for (let i = 0; i < cart.length; i++) {
+        for (let j = 0; j < products.length; j++) {
+            if (products[j].url === cart[i].name) {
+                price += products[j].price * cart[i].count;
+            }
+        }
+    }
+    totalPrice.innerText = `${price.toFixed(2)} грн`;
+    totalPrice.style.paddingLeft = "10px";
+    totalPrice.style.paddingRight = "10px";
+}
+
 content.style.minHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight - 50 + "px";
 footer.style.opacity = "1";
 
 window.addEventListener("resize", sizeFit);
 window.addEventListener("load", sizeFit);
 window.addEventListener("load", router);
+window.addEventListener("load", updateCartCount);
 window.addEventListener("hashchange", router);
-
 content.addEventListener("click", function (event) {
     if (event.target.classList.contains("addToCart")) {
         addToCart(event.target.value);
+    } else if (event.target.classList.contains("cartPlusMinusBut")) {
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        if (event.target.innerText === "+") {
+            let index;
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].name === event.target.value) {
+                    index = i;
+                }
+            }
+            cart[index].count++;
+        } else {
+            let index;
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].name === event.target.value) {
+                    index = i;
+                }
+            }
+            cart[index].count--;
+            if (cart[index].count === 0) {
+                cart.splice(index, 1);
+            }
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        updateCartProductsAndPrice();
     }
 })
