@@ -12,6 +12,32 @@ li {
     /*list-style: url("https://www.onlinewebfonts.com/icon/58956");*/
 }
 
+input {
+    height: 30px;
+    font-size: 16px;
+    color: #4f4f4f;
+    border-radius: 15px;
+    border: 1px solid rgba(79, 79, 79, .5);
+    outline: none;
+    width: 95%;
+    padding-left: 10px;
+}
+
+input:invalid {
+    border: 2px dashed red;
+}
+
+select {
+    height: 30px;
+    font-size: 16px;
+    color: #4f4f4f;
+    border-radius: 15px;
+    border: 1px solid rgba(79, 79, 79, .5);
+    outline: none;
+    width: 95%;
+    padding-left: 10px;
+}
+
 .header {
     position: sticky;
     background-color: #222;
@@ -421,12 +447,8 @@ li {
 
 .cartListAndValidationContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
     grid-gap: 10px;
-}
-
-.validation {
-
 }
 
 .allCart {
@@ -533,6 +555,62 @@ li {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.validation {
+
+}
+
+.clientContactInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.placeholder {
+    color: black;
+    font-size: 14px;
+    font-family: vw6-VWHead, sans-serif;
+    padding-left: 10px;
+}
+
+.clientAddress {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.deliveryAndPayout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.buy {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.buyBut {
+    height: 50px;
+    width: 214px;
+    font-family: Open Sans, sans-serif;
     font-size: 18px;
-    font-weight: 500;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    background: #e31837;
+    margin-top: 30px;
+    outline: none;
+    cursor: pointer;
+}
+
+.buyBut:hover {
+    background: #b7132c;
 }

@@ -18,7 +18,53 @@ export function createCart(callback) {
     <div class="cartList"></div>
     <div class="resultPrice"></div>
     </div>
-    <div class="validation">validation form here</div>
+    <div class="validation">
+    <div class="clientContactInfo">
+    <div class="contactName">
+    <div class="placeholder">Ім'я</div>
+    <input id="nameInput" placeholder="Ім'я">
+    </div>
+    <div class="contactPhone">
+    <div class="placeholder">Телефон</div>
+    <input id="phoneInput" value="+380" type="tel" pattern="[+]380[0-9]{9}" placeholder="Телефон">
+    </div>
+    <div class="contactEmail">
+    <div class="placeholder">Email</div>
+    <input id="emailInput" type="email" placeholder="Email">
+    </div>
+    </div>
+    <div class="clientAddress">
+    <div class="clientHouse">
+    <div class="placeholder">Вулиця, дім</div>
+    <input id="houseInput" placeholder="Вулиця, дім">
+    </div>
+    <div class="clientFlatN">
+    <div class="placeholder">Квартира</div>
+    <input id="FlatNInput" type="number" placeholder="Квартира">
+    </div>
+    </div>
+    <div class="deliveryAndPayout">
+    <div class="deliveryDate">
+    <div class="placeholder">Дата</div>
+    <input id="deliveryDateInput" type="date" placeholder="Дата">
+    </div>
+    <div class="deliveryTime">
+    <div class="placeholder">Час</div>
+    <input id="deliveryTimeInput" type="time" placeholder="Час">
+    </div>
+    <div class="payout">
+    <div class="placeholder">Оплата</div>
+    <select id="payoutInput">
+    <option class="option">Карткою онлайн</option>
+    <option class="option">Карткою на місці</option>
+    <option class="option">Готівкою на місці</option>
+    </select>
+    </div>
+    </div>
+    <div class="buy">
+    <button class="buyBut">Замовити</button>
+    </div>
+    </div>
     </div>`;
     callback(cartHtml);
 }
@@ -61,5 +107,5 @@ export async function updateCartProductsAndPrice() {
             }
         }
     }
-    resultPrice.innerHTML = `Разом: ${price} грн`;
+    resultPrice.innerHTML = `Разом: ${price.toFixed(2)} грн`;
 }
