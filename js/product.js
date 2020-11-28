@@ -1,5 +1,6 @@
 import {content} from "./router.js";
 
+
 let productHtml;
 
 export function setProductPage(product) {

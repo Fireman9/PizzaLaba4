@@ -1,5 +1,6 @@
 import {content} from "./router.js";
 
+
 let cartHtml;
 
 export function setCartPage() {
@@ -40,7 +41,7 @@ export function createCart(callback) {
     </div>
     <div class="clientFlatN">
     <div class="placeholder">Квартира</div>
-    <input id="FlatNInput" type="number" placeholder="Квартира">
+    <input id="flatNInput" type="number" placeholder="Квартира">
     </div>
     </div>
     <div class="deliveryAndPayout">

@@ -1,5 +1,6 @@
 import {content} from "./router.js";
 
+
 let discountHtml;
 
 export function setDiscountPage(discount) {

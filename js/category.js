@@ -1,5 +1,6 @@
 import {content} from "./router.js";
 
+
 let categoryHtml;
 
 export function setCategoryPage(db, index) {

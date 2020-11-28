@@ -12,7 +12,6 @@ export const header = document.getElementById("header");
 export const footer = document.getElementById("footer");
 
 function addToCart(value) {
-    console.log(value);
     if (localStorage.getItem("cart") === null) {
         let cart = [];
         cart.push({
@@ -163,7 +162,8 @@ async function router() {
                 window.location.href = href;
             }
         } else if (splittedHash[0] === "#order") {
-            // TODO: check to id
+            window.scrollTo(0, 0);
+            content.innerHTML = `<div class="successOrderInfo">Ваше замовлення №${splittedHash[1]} успішно прийнято, найближчим часом з вами зв'яжеться наш консультант</div>`;
         } else {
             setMainPage();
             window.location.href = href;
@@ -175,7 +175,6 @@ async function router() {
 }
 
 function sizeFit() {
-    // TODO: check for bot limit
     if (window.innerWidth <= 1350) {
         content.style.marginLeft = "1%";
         content.style.marginRight = "1%";
@@ -187,6 +186,7 @@ function sizeFit() {
         content.style.marginLeft = "16%";
         content.style.marginRight = "16%";
     }
+    content.style.minHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight - 50 + "px";
 }
 
 async function showPrice() {
@@ -221,7 +221,7 @@ window.addEventListener("load", sizeFit);
 window.addEventListener("load", router);
 window.addEventListener("load", updateCartCount);
 window.addEventListener("hashchange", router);
-content.addEventListener("click", function (event) {
+content.addEventListener("click", async function (event) {
     if (event.target.classList.contains("addToCart")) {
         addToCart(event.target.value);
     } else if (event.target.classList.contains("cartPlusMinusBut")) {
@@ -249,5 +249,38 @@ content.addEventListener("click", function (event) {
         localStorage.setItem("cart", JSON.stringify(cart));
         updateCartCount();
         updateCartProductsAndPrice();
+    } else if (event.target.classList.contains("buyBut")) {
+        let name = document.getElementById("nameInput");
+        let phone = document.getElementById("phoneInput");
+        let email = document.getElementById("emailInput");
+        let house = document.getElementById("houseInput");
+        let flat = document.getElementById("flatNInput");
+        let date = document.getElementById("deliveryDateInput");
+        let time = document.getElementById("deliveryTimeInput");
+        let payout = document.getElementById("payoutInput");
+        name.required = true;
+        phone.required = true;
+        house.required = true;
+        date.required = true;
+        time.required = true;
+        if (name.checkValidity() && phone.checkValidity() && house.checkValidity() &&
+            date.checkValidity() && time.checkValidity()) {
+            let response = await fetch('https://my-json-server.typicode.com/Fireman9/PizzaLaba4/orders', {
+                method: "POST",
+                body: JSON.stringify({
+                    name: name.value,
+                    phone: phone.value,
+                    email: email.value,
+                    house: house.value,
+                    flat: flat.value,
+                    date: date.value,
+                    time: time.value,
+                    payout: payout.value,
+                    cart: JSON.parse(localStorage.getItem("cart"))
+                })
+            }).then(response => response.json());
+            localStorage.clear();
+            window.location.hash = "#order/" + response.id;
+        }
     }
 })

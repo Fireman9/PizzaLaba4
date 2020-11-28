@@ -8,10 +8,6 @@ a {
     text-decoration: none;
 }
 
-li {
-    /*list-style: url("https://www.onlinewebfonts.com/icon/58956");*/
-}
-
 input {
     height: 30px;
     font-size: 16px;
@@ -241,26 +237,6 @@ select {
     margin-top: 20px;
 }
 
-/*@media only screen and (max-device-width: 481px) {*/
-/*    .productsContainer {*/
-/*        grid-template-columns: repeat(auto-fill, minmax(481px, 1fr));*/
-/*    }*/
-/*    #content {*/
-/*        margin-left: 2%;*/
-/*        margin-right: 2%;*/
-/*    }*/
-/*}*/
-
-/*@media only screen and (max-device-width: 681px) {*/
-/*    .productsContainer {*/
-/*        grid-template-columns: repeat(auto-fill, minmax(681px, 1fr));*/
-/*    }*/
-/*    #content {*/
-/*        margin-left: 2%;*/
-/*        margin-right: 2%;*/
-/*    }*/
-/*}*/
-
 .product {
     border: 1px solid #e0e0e0;
     box-shadow: 0 0 15px rgba(0, 0, 0, .1);
@@ -396,7 +372,6 @@ select {
 
 .ulIngredients {
     font-family: Roboto, sans-serif;
-    /*font-weight: 500;*/
     font-size: 18px;
 }
 
@@ -497,10 +472,6 @@ select {
     line-height: 146%;
 }
 
-.productInCartPrice {
-
-}
-
 .productInCartButAndDelBut {
     display: flex;
     flex-direction: row;
@@ -559,10 +530,6 @@ select {
     font-weight: 700;
 }
 
-.validation {
-
-}
-
 .clientContactInfo {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -613,4 +580,93 @@ select {
 
 .buyBut:hover {
     background: #b7132c;
+}
+
+@media (max-width: 481px) {
+    .cartContainer {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        background-color: transparent;
+    }
+
+    .headerTop {
+        grid-template-columns: 100%;
+    }
+
+    .headerLink {
+        font-weight: 300;
+        font-size: 22px;
+        line-height: 120%;
+    }
+
+    .scrollerButtons {
+        grid-gap: 40%;
+    }
+
+    .category {
+        font-size: 1.5em;
+    }
+
+    .footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+    }
+
+    .countAndIcon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .cartBut {
+        height: 35px;
+    }
+
+    .cartProductImg {
+        display: none;
+    }
+}
+
+@media (max-width: 641px) {
+    .totalPrice {
+        display: none;
+    }
+
+    .companyName {
+        font-weight: 650;
+        font-size: 26px;
+    }
+
+    .contactInfo {
+        font-weight: 300;
+        font-size: 20px;
+    }
+
+    .markInfo {
+        font-weight: 300;
+        font-size: 14px;
+    }
+
+    .clientContactInfo {
+        grid-template-columns: 1fr;
+    }
+
+    .clientAddress {
+        grid-template-columns: 1fr;
+    }
+
+    .deliveryAndPayout {
+        grid-template-columns: 1fr;
+    }
+
+    .cartListAndValidationContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .cartList {
+        min-width: auto;
+    }
 }
